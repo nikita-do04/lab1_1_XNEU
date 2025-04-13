@@ -9,15 +9,15 @@
 # Як запустити проєкт 
 
 Клонувати репозиторій:
-"
+
 - git clone https://github.com/nikita-do04/lab1_1_XNEU.git
 - cd lab1_1_XNEU
-"
+
 
 Встановити залежності:
-"
+
 - npm install
-"
+
 
 Запустити сервер:
 "
@@ -25,10 +25,7 @@
 "
 
 Перейти в браузері:
-" 
+
 - Swagger UI: http://localhost:3000/api-docs
-- "
+  
 
-
-Swagger UI: http://localhost:3000/api-docs
-" 
