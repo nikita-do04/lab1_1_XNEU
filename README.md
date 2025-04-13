@@ -10,23 +10,18 @@
 
 Клонувати репозиторій:
 "
-Copy
-Edit
+
 git clone https://github.com/nikita-do04/lab1_1_XNEU.git
 cd lab1_1_XNEU
 "
 
 Встановити залежності:
 "
-Copy
-Edit
 npm install
 "
 
 Запустити сервер:
 "
-Copy
-Edit
 node index.js
 "
 
