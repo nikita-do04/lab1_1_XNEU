@@ -1,0 +1,202 @@
+openapi: 3.0.0
+info:
+  title: Insurance Company API
+  version: 1.0.0
+  description: REST API для роботи зі страховими договорами та філіями
+
+servers:
+  - url: http://localhost:3000
+
+paths:
+  /branches:
+    get:
+      summary: Отримати всі філії
+      responses:
+        '200':
+          description: Успішно
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Branch'
+
+    post:
+      summary: Додати філію
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Branch'
+      responses:
+        '201':
+          description: Створено
+
+  /branches/{branchId}:
+    get:
+      summary: Отримати філію за ID
+      parameters:
+        - name: branchId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Знайдено
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Branch'
+        '404':
+          description: Не знайдено
+
+    put:
+      summary: Оновити філію
+      parameters:
+        - name: branchId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Branch'
+      responses:
+        '200':
+          description: Оновлено
+
+    delete:
+      summary: Видалити філію
+      parameters:
+        - name: branchId
+          in: path
+          required: true
+          schema:
+            type: string
+          
+      responses:
+        '204':
+          description: Видалено
+
+  /contracts:
+    get:
+      summary: Отримати всі договори
+      responses:
+        '200':
+          description: Успішно
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Contract'
+
+    post:
+      summary: Додати договір
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contract'
+      responses:
+        '201':
+          description: Створено
+
+  /contracts/{contractId}:
+    get:
+      summary: Отримати договір за ID
+      parameters:
+        - name: contractId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Знайдено
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contract'
+        '404':
+          description: Не знайдено
+
+    put:
+      summary: Оновити договір
+      parameters:
+        - name: contractId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contract'
+      responses:
+        '200':
+          description: Оновлено
+
+    delete:
+      summary: Видалити договір
+      parameters:
+        - name: contractId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Видалено
+
+components:
+  schemas:
+    Branch:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        address:
+          type: string
+        phone:
+          type: string
+      required:
+        - name
+        - address
+        - phone
+
+    Contract:
+      type: object
+      properties:
+        id:
+          type: integer
+        number:
+          type: string
+        date:
+          type: string
+          format: date
+        sum:
+          type: number
+        rate:
+          type: number
+        branch_id:
+          type: integer
+        insurance_type:
+          type: string
+      required:
+        - number
+        - date
+        - sum
+        - rate
+        - branch_id
+        - insurance_type
